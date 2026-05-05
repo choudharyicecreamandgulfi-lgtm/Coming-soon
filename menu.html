@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Full Menu</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="menu-mobile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body>
+
+
+
+
+
+
+  <!-- TOP BRAND BAR -->
+<div class="top-brand">
+  <img src="logo.png" alt="logo">
+  <h2>Choudhary Ice-cream</h2>
+</div>
+
+
+  <nav class="navbar menu-navbar">
+
+  <!-- LEFT -->
+  <div class="nav-left">
+    <h2> Full Menu</h2>
+  </div>
+
+  <!-- CENTER -->
+  <div class="nav-center">
+    <div class="search-box">
+  <i class="fas fa-search"></i>
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="    Search ice creams..."
+    oninput="searchProduct()"
+  />
+</div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="nav-right">
+    <a href="index.html" class="back-btn">⬅ Back</a>
+
+    <button class="cart-btn" onclick="openCart()">
+      🛒 Cart
+      <span class="cart-count">0</span>
+    </button>
+  </div>
+
+</nav>
+
+
+  <!-- SIDEBAR CART -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<div class="cart-sidebar" id="cartSidebar">
+  <h2>Your Cart</h2>
+<ul id="cartList" class="cart-items"></ul>
+
+<p id="cartTotal" class="cart-total"></p>
+
+<button type="button" class="cancel-btn" onclick="closeCart()">Close</button>
+<button class="checkout-btn" onclick="checkout()">Checkout</button>
+</div>
+
+
+
+  <!-- CATEGORY SECTION -->
+<section class="categories">
+  <h2>Categories </h2>
+
+  <div class="category-container" id="menuCategories"></div>
+</section>
+
+
+  <!-- MENU SECTION -->
+  <section class="catalog">
+    <h2>All Ice Cream Items </h2>
+    <div class="catalog-grid" id="menuContainer"></div>
+  </section>
+
+
+
+  <!-- CHECKOUT POPUP -->
+<div class="checkout-popup" id="checkoutPopup">
+  <div class="checkout-box">
+
+    <h2 style="color: black;">🛒 Checkout</h2>
+    <p style="color:gray;">We Accept Only Cash On Delivery Order</p>
+
+    <!-- CART ITEMS -->
+    <div id="checkoutItems"></div>
+
+    <!-- TOTAL -->
+    <h3 id="checkoutTotal"></h3>
+
+    <!-- FORM -->
+    <form id="checkoutForm">
+      <input type="text" id="custName" placeholder="Your Name" required>
+      <input type="email" id="custEmail" placeholder="Email Address" required>
+      <input type="tel" id="custPhone" placeholder="Phone Number" required>
+      <textarea id="custAddress" placeholder="Delivery Address" required></textarea>
+
+      <button type="submit" class="place-order-btn">Place Order</button>
+      <button type="button" onclick="closeCheckout()" class="cancel-btn">Cancel</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+<div class="success-popup" id="successPopup">
+  <div class="success-box">
+    <h2>🎉 Order Placed!</h2>
+    <p>Your order has been successfully placed.</p>
+    <button onclick="closeSuccess()">OK</button>
+  </div>
+</div>
+
+
+
+
+<div id="toastContainer" class="toast-container"></div>
+
+<script type="module" src="menu.js"></script>
+
+ 
+</body>
+</html>

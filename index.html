@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ice Cream UI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <!-- BACKGROUND BUBBLES -->
+<div class="bubbles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+
+
+<!-- TOP BRAND BAR -->
+<div class="top-brand">
+  <img src="logo.png" alt="logo">
+  <h2>Choudhary Ice-cream</h2>
+</div>
+
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+  ☰
+</div>
+
+  <div class="nav-left">
+    <a href="#home">HOME</a>
+    <a href="#catalog">CATALOG</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="nav-right">
+  
+
+    <button class="cart-btn" onclick="openCart()">
+      🛒 Cart
+      <span class="cart-count">0</span>
+      
+    </button>
+    
+  </div>
+
+
+  
+
+</nav>
+
+<!-- SIDEBAR CART -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<div class="cart-sidebar" id="cartSidebar">
+  <h2>Your Cart</h2>
+
+  <ul id="cartList" class="cart-items"></ul>
+
+<p id="cartTotal" class="cart-total"></p>
+
+
+<button type="button" class="cancel-btn" onclick="closeCart()">Close</button>
+<button class="checkout-btn" onclick="checkout()">Checkout</button>
+</div>
+
+  <!-- HERO -->
+  <div class="hero">
+  <div class="hero-text">
+    <h1>Indulge in <br> Sweet Perfection </h1>
+    <p>Crafted with love, served with happiness.</p>
+    <button class="cta-btn">Explore Menu</button>
+  </div>
+
+  <div class="hero-image">
+    <img src="vecteezy_colored-ice-cream-on-a-white-background_65421614.png">
+  </div>
+</div>
+
+
+  <!-- CATEGORY SECTION -->
+<section class="categories">
+  <h2>Categories 🍨</h2>
+
+  <div class="category-container">
+
+    <div class="category-item" onclick="filterCategory('all')">
+      <span>🍨</span>
+      <p>All</p>
+    </div>
+
+    <div class="category-item" onclick="filterCategory('kulfi')">
+      <span>🍦</span>
+      <p>Kulfi</p>
+    </div>
+
+    <div class="category-item" onclick="filterCategory('premium')">
+      <span>🍫</span>
+      <p>Premium</p>
+    </div>
+
+    <div class="category-item" onclick="filterCategory('regular')">
+      <span>🍧</span>
+      <p>Regular</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+  <!-- CATALOG SECTION -->
+<section class="catalog" id="catalog">
+  <h2>Our Ice Cream Menu 🍨</h2>
+  <div class="catalog-grid" id="catalogContainer"></div>
+   <!-- SEE MORE BUTTON -->
+  <div class="see-more-container">
+  <button class="see-more-btn" onclick="window.location.href='menu.html'">
+  See More
+</button>
+  </div>
+</section>
+
+<!-- ABOUT US -->
+<section class="about" id="about">
+
+  <!-- HEADING ABOVE -->
+  <h2 class="about-title">About Us </h2>
+
+  <!-- CONTENT ON IMAGE -->
+  <div class="about-content">
+    <p>
+      Choudhary Ice-cream and Kulfi is a premium ice cream and kulfi manufacturer since 2007.
+      We specialize in providing high-quality ice cream for weddings, parties, and events.
+    </p>
+
+    <p>
+      Our mission is to serve pure and delicious products made with the best ingredients.
+      Our signature Gulmohar Kulfi is loved for its rich taste.
+    </p>
+
+    <ul>
+      <li>✔ 15+ Years Experience</li>
+      <li>✔ Pure & Hygienic Ingredients</li>
+      <li>✔ Event Specialist</li>
+      <li>✔ Best Taste Guarantee</li>
+    </ul>
+  </div>
+
+</section>
+
+
+
+<section class="reviews">
+  <h2>What Our Customers Say 💬</h2>
+
+  <div class="slider-wrapper">
+    <button class="slide-btn left" onclick="scrollReviews(-1)">❮</button>
+
+    <div class="review-container" id="reviewContainer"></div>
+
+    <button class="slide-btn right" onclick="scrollReviews(1)">❯</button>
+  </div>
+
+  <button class="review-btn" onclick="openReviewModal()">Write a Review ✍️</button>
+</section>
+
+
+
+
+<!-- Contact Form-->
+<section class="contact" id="contact">
+  <h2>Contact Us 📞</h2>
+
+  <div class="contact-container">
+    <form id="contactForm">
+
+      <input type="text" placeholder="Your Name" required>
+
+      <input type="email" placeholder="Your Email" required>
+      
+      <input type="tel" placeholder="Phone Number" required>
+      
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+  </div>
+</section>
+
+
+
+
+
+  <!-- CHECKOUT POPUP -->
+<div class="checkout-popup" id="checkoutPopup">
+  <div class="checkout-box">
+
+    <h2 style="color: black;">🛒 Checkout</h2>
+    <p style="color:gray;">We Accept Only Cash On Delivery Order</p>
+
+    <!-- CART ITEMS -->
+    <div id="checkoutItems"></div>
+
+    <!-- TOTAL -->
+    <h3 id="checkoutTotal"></h3>
+
+    <!-- FORM -->
+    <form id="checkoutForm">
+      <input type="text" id="custName" placeholder="Your Name" required>
+      <input type="email" id="custEmail" placeholder="Email Address" required>
+      <input type="tel" id="custPhone" placeholder="Phone Number" required>
+      <textarea id="custAddress" placeholder="Delivery Address" required></textarea>
+
+      <button type="submit" class="place-order-btn">Place Order</button>
+      <button type="button" onclick="closeCheckout()" class="cancel-btn">Cancel</button>
+    </form>
+
+  </div>
+</div>
+
+
+<div class="success-popup" id="successPopup">
+  <div class="success-box">
+    <h2>🎉 Order Placed!</h2>
+    <p>Your order has been successfully placed.</p>
+    <button onclick="closeSuccess()">OK</button>
+  </div>
+</div>
+
+
+
+
+
+
+<!-----------------MAP--------------------------->
+<!-- MAP SECTION -->
+<section class="map-section">
+  <h2>Our Location 📍</h2>
+
+ <div class="location-container">
+ <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.469626085934!2d72.87202477569683!3d21.17349518279085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f15ef9952db%3A0x27a0d1090f5877e4!2sChoudhary%20Ice-cream%20and%20Kulfi!5e0!3m2!1sen!2sin!4v1774801658167!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <div class="location-info">
+    <h3>📍 Surat</h3>
+    <p>Gujarat, India</p>
+    <button onclick="window.open('https://maps.app.goo.gl/qQ8PGXsGw8j4WQwH9')">
+      Open in Maps
+    </button>
+  </div>
+</div>
+</section>
+
+
+    <!--------Footer Section---------->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- BRAND -->
+    <div class="footer-box">
+      <h3 class="footer-logo">
+  <img src="logo.png" alt="logo">
+  Choudhary Ice-cream
+</h3>
+     <p >Taste Only Purity</p>
+    </div>
+
+    <!-- LINKS -->
+    <div class="footer-box">
+      <h4>Quick Links</h4>
+      <a href="#">Home</a>
+      <a href="#catalog">Catalog</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="footer-box">
+      <h4>Contact</h4>
+      <p>📞 +91 7048001148</p>
+      <p>📧 rojanil9672@gmail.com</p>
+      <p>📍 Surat, Gujarat</p>
+    </div>
+
+    <div class="social-icons">
+  <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+  <a href="#"><i class="fab fa-whatsapp"></i></a>
+  <a href="#"><i class="fab fa-facebook"></i></a>
+</div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Choudhary Ice-cream. All rights reserved.</p>
+  </div>
+
+</footer>
+
+
+
+
+
+<div class="review-modal" id="reviewModal">
+
+  <div class="review-box">
+
+    <span class="close-btn" onclick="closeReviewModal()">✖</span>
+
+    <h2>Share Your Experience 🍦</h2>
+
+    <form id="reviewForm">
+
+      <input type="text" id="name" placeholder="Your Name" required>
+
+      <!-- ⭐ STARS -->
+      <div class="stars">
+        <span data-value="1">⭐</span>
+        <span data-value="2">⭐</span>
+        <span data-value="3">⭐</span>
+        <span data-value="4">⭐</span>
+        <span data-value="5">⭐</span>
+      </div>
+
+      <textarea id="message" placeholder="Write your review..." required></textarea>
+
+      <button type="submit">Submit Review</button>
+
+    </form>
+
+  </div>
+</div>
+
+
+<div id="toastContainer" class="toast-container"></div>
+
+
+
+<script type="module" src="script.js"></script>
+
+</body>
+
+</html>

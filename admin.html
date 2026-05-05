@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- ADMIN NAVBAR -->
+<nav class="admin-navbar">
+
+  <div class="admin-left">
+    <h2>⚙️ Choudhery ice-cream and Kulfi</h2>
+  </div>
+
+  <div class="admin-right">
+    <a href="#">Dashboard</a>
+    <a href="#">Products</a>
+    <a href="#">Categories</a>
+    <a href="order.html">Orders</a>
+    <button class="logout-btn">Logout</button>
+  </div>
+
+</nav>
+
+<h1>Admin Dashboard ⚙️</h1>
+
+<!-- CATEGORY SECTION -->
+<div class="admin-grid">
+
+  <!-- CATEGORY -->
+  <div class="form">
+    <h2>Add Category</h2>
+
+    <input type="text" id="categoryName" placeholder="Category Name">
+    <button onclick="addCategory()">Add Category</button>
+
+    <div id="categoryList"></div>
+  </div>
+
+  <!-- PRODUCT -->
+  <div class="form">
+    <h2>Add Product</h2>
+
+    <input type="text" id="name" placeholder="Product Name">
+    <input type="number" id="priceLimited" placeholder="Price (Per Litre)">
+<input type="number" id="priceUnlimited" placeholder="Price (Per Person)">
+   <div class="upload-box">
+  <input type="file" id="imageFile" hidden>
+
+  <div class="upload-area" onclick="document.getElementById('imageFile').click()">
+    <p>📤 Click to upload image</p>
+    <img id="previewImg" style="display:none;">
+  </div>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <p id="progressText"></p>
+</div>
+
+<input type="text" id="image" placeholder="Image URL will appear here">
+    <h4>Select Category</h4>
+    <div class="category-select-row">
+  <select id="category"></select>
+ 
+</div>
+
+    <button onclick="addProduct()">Add Product</button>
+  </div>
+
+</div>
+
+
+<div class="products">
+  <h2>Customer Reviews ⭐</h2>
+  <div id="reviewList"></div>
+</div>
+
+
+
+<!-- PRODUCT LIST -->
+<div class="products">
+  <input type="text" id="searchInput" placeholder="🔍 Search products..." />
+  <h2>All Products</h2>
+  <div id="productList"></div>
+</div>
+
+
+
+<!-- EDIT POPUP -->
+<div class="popup" id="editPopup">
+  <div class="popup-content">
+
+    <h2>✏️ Edit Product</h2>
+
+    <input type="text" id="editName" placeholder="Product Name">
+    <input type="number" id="editPrice" placeholder="Price">
+
+    <!-- IMAGE UPLOAD SAME AS ADD -->
+    <div class="upload-box">
+      <input type="file" id="editImageFile" hidden>
+
+      <div class="upload-area" onclick="document.getElementById('editImageFile').click()">
+        <p>📤 Click to upload image</p>
+        <img id="editPreviewImg" style="display:none;">
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="editProgressBar"></div>
+      </div>
+
+      <p id="editProgressText"></p>
+    </div>
+
+    <input type="text" id="editImage" placeholder="Image URL">
+
+    <!-- CATEGORY DROPDOWN -->
+    <h4>Select Category</h4>
+    <div class="category-select-row">
+      <select id="editCategory"></select>
+    </div>
+
+    <div class="popup-actions">
+      <button class="btn update-btn" onclick="updateProduct()">✅ Update</button>
+      <button class="btn cancel-btn" onclick="closePopup()">❌ Cancel</button>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div id="toastContainer"></div>
+
+
+
+
+<script type="module" src="admin.js"></script> 
+</body>
+</html>

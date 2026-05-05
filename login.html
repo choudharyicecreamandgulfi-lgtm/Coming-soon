@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Login</title>
+  
+</head>
+<style>
+    /* 🌌 BACKGROUND */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #4a4e69, #22223b);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 📦 WRAPPER */
+.login-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🧊 GLASS CARD */
+.login-box {
+  width: 320px;
+  padding: 30px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #c9ada7, #9a8c98);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  text-align: center;
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+/* 🏷️ TITLE */
+.login-box h2 {
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 13px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+/* 📥 INPUT STYLE */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 14px;
+}
+
+/* 🪄 FLOATING LABEL */
+.input-group label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-size: 13px;
+  color: #eee;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+/* ✨ FLOAT EFFECT */
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -8px;
+  left: 10px;
+  font-size: 11px;
+  background: #9a8c98;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* 🔘 BUTTON */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #f2e9e4;
+  color: #222;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+</style>
+<body>
+
+<div class="login-wrapper">
+  <div class="login-box">
+
+    <h2>🔐 Admin Login</h2>
+    <p class="subtitle">Welcome back! Please login to continue</p>
+
+    <div class="input-group">
+      <input type="email" id="email" required>
+      <label>Email</label>
+    </div>
+
+    <div class="input-group">
+      <input type="password" id="password" required>
+      <label>Password</label>
+    </div>
+
+    <button class="login-btn" onclick="login()">Login</button>
+
+  </div>
+</div>
+
+<script type="module" src="login.js"></script>
+</body>
+</html>
